@@ -1,0 +1,10 @@
+17:41:21 **** Incremental Build of configuration Debug for project Hello_puTTY ****
+make -j12 all 
+arm-none-eabi-size  Hello_puTTY.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37988	    136	   4200	  42324	   a554	Hello_puTTY.elf
+Finished building: default.size.stdout
+ 
+
+17:41:21 Build Finished. 0 errors, 0 warnings. (took 226ms)
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="TIM_AutoReloadPreload"/>
+		<list key="findhistory">
+			<item value="TIM_AutoReloadPreload"/>
+			<item value="RCC_LSE_Config"/>
+			<item value="GPIO_Alternate_function_selection"/>
+			<item value="TIM_Input_Capture_Selection"/>
+			<item value="TIM_Input_Capture_Prescaler"/>
+			<item value="TIM_Input_Capture_Polarity"/>
+			<item value="TIM2"/>
+			<item value="TIM6"/>
+			<item value="GPIO_pull_define"/>
+			<item value="GPIO_PORT"/>
+			<item value="GPIO_pins_define"/>
+			<item value="TIM_Counter_Mode"/>
+			<item value="PrintRCCData"/>
+			<item value="RCC_HSI_Config"/>
+			<item value="RCC_System_Clock_Type"/>
+		</list>
+		<list key="replacehistory">
+			<item value="PrintSystemClockInfo"/>
+			<item value=""/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="494"/>
+		<item key="DIALOG_Y_ORIGIN" value="522"/>
+		<item key="DIALOG_WIDTH" value="363"/>
+		<item key="DIALOG_HEIGHT" value="437"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
+	</section>
+</section>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;004_PLL_SYSCLK_HSE&apos; to &apos;005_PLL_SYSCLK_HSE&apos;" description="Rename resource &apos;004_PLL_SYSCLK_HSE&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/004_PLL_SYSCLK_HSE" name="005_PLL_SYSCLK_HSE" stamp="1710854143154" updateReferences="true"/>
+</session>

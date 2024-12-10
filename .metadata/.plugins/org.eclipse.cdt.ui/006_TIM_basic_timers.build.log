@@ -1,0 +1,10 @@
+14:12:33 **** Incremental Build of configuration Debug for project 006_TIM_basic_timers ****
+make -j12 all 
+arm-none-eabi-size  006_TIM_basic_timers.elf 
+   text	   data	    bss	    dec	    hex	filename
+  40488	    144	   4344	  44976	   afb0	006_TIM_basic_timers.elf
+Finished building: default.size.stdout
+ 
+
+14:12:33 Build Finished. 0 errors, 0 warnings. (took 282ms)
+
