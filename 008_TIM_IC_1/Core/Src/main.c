@@ -22,7 +22,7 @@ void TIMER2_Init(void);
 void TIMER6_Init(void);
 
 void Error_Handler(void);
-
+void SystemClock_Config_2(uint8_t sysClk);
 
 GPIO_InitTypeDef led = {0};
 TIM_HandleTypeDef timer2_hn = {0};
@@ -57,6 +57,13 @@ int main(void)
 
 	HAL_TIM_Base_Start_IT(&timer6_hn);
 
+	//counter frequency
+	timer2CntFreq = ((HAL_RCC_GetPCLK1Freq()*2)/(timer2_hn.Init.Prescaler+1));
+
+	//tick time
+	timer2Res = 1/timer2CntFreq;
+
+
 	while(1)
 	{
 		if(ICCaptFlag)
@@ -73,17 +80,6 @@ int main(void)
 				captDefference1 = capturedTickCount[1] + (0xFFFFFFFF - capturedTickCount[0]);
 			}
 
-			//counter frequency
-			timer2CntFreq = ((HAL_RCC_GetPCLK1Freq()*2)/(timer2_hn.Init.Prescaler+1)) ;
-			//tick time
-			timer2Res = 1/timer2CntFreq;
-
-			//period time = (tick count between two rising edge)*tick time
-			userSignalPeriod = captDefference1 * timer2Res;
-
-			//frequency = 1/period time
-			userSignalfreq = 1/userSignalPeriod;
-
 			/* get the tick count between second rising edge and the next falling*/
 			if(capturedTickCount[2] > capturedTickCount[1])
 			{
@@ -94,8 +90,18 @@ int main(void)
 				captDefference2 = capturedTickCount[2] + (0xFFFFFFFF - capturedTickCount[1]);
 
 			}
+
+
+			//period time = (tick count between two rising edge)*tick time
+			userSignalPeriod = captDefference1 * timer2Res;
+
+			//frequency = 1/period time
+			userSignalfreq = 1/userSignalPeriod;
+
+
 			//time ON = (tick count between second rising edge and the next falling)*tick time
 			userSignalTimeOn = captDefference2 * timer2Res;
+
 
 			// Duty cycle = time ON/period time
 			userSignalDuty = (userSignalTimeOn/userSignalPeriod) * 100 ;
@@ -104,6 +110,7 @@ int main(void)
 			printf("the signal frequency  : %lf Hz\n",userSignalfreq);
 			printf("the signal period     : %lf s\n",userSignalPeriod);
 			printf("the signal Duty Cycle : %lf \n",userSignalDuty);
+			printf("------------------\n\n");
 
 		}
 
@@ -119,7 +126,7 @@ void MAIN_Init(void)
 	HAL_Init();
 
 	// System Clock Configurations
-	SystemClock_Config();
+	SystemClock_Config_2(RCC_SYSCLK_120_MHZ);
 
 	// Peripherals High Level Initializations
 	PrintSystemClockInfo();
@@ -174,6 +181,120 @@ void SystemClock_Config(void)
 }
 
 
+void SystemClock_Config_2(uint8_t sysClk)
+{
+	RCC_OscInitTypeDef Osc_init;
+	RCC_ClkInitTypeDef clock_init;
+	uint8_t FlashLatncy = 0;
+
+	Osc_init.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+	Osc_init.HSEState =RCC_HSE_BYPASS;
+
+	Osc_init.PLL.PLLState =RCC_PLL_ON;
+	Osc_init.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+
+	switch(sysClk)
+	{
+	case RCC_SYSCLK_50_MHZ:
+	{
+		Osc_init.PLL.PLLM = 8;
+		Osc_init.PLL.PLLN = 100;
+		Osc_init.PLL.PLLP = 2;
+		Osc_init.PLL.PLLQ = 2;
+
+		clock_init.ClockType  = RCC_CLOCKTYPE_SYSCLK |\
+				RCC_CLOCKTYPE_HCLK   |\
+				RCC_CLOCKTYPE_PCLK1  |\
+				RCC_CLOCKTYPE_PCLK2;
+
+
+		clock_init.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+
+		clock_init.AHBCLKDivider  = RCC_SYSCLK_DIV1;
+
+		clock_init.APB1CLKDivider = RCC_HCLK_DIV2;
+
+		clock_init.APB2CLKDivider = RCC_HCLK_DIV2;
+
+		FlashLatncy = FLASH_ACR_LATENCY_1WS;
+
+		break;
+	}
+	case RCC_SYSCLK_84_MHZ:
+	{
+		Osc_init.PLL.PLLM = 8;
+		Osc_init.PLL.PLLN = 168;
+		Osc_init.PLL.PLLP = 2;
+		Osc_init.PLL.PLLQ = 2;
+
+		clock_init.ClockType  = RCC_CLOCKTYPE_SYSCLK |\
+				RCC_CLOCKTYPE_HCLK   |\
+				RCC_CLOCKTYPE_PCLK1  |\
+				RCC_CLOCKTYPE_PCLK2;
+
+
+		clock_init.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+
+		clock_init.AHBCLKDivider  = RCC_SYSCLK_DIV1;
+
+		clock_init.APB1CLKDivider = RCC_HCLK_DIV2;
+
+		clock_init.APB2CLKDivider = RCC_HCLK_DIV2;
+
+		FlashLatncy = FLASH_ACR_LATENCY_2WS;
+
+
+		break;
+
+	}
+	case RCC_SYSCLK_120_MHZ:
+	{
+		Osc_init.PLL.PLLM = 8;
+		Osc_init.PLL.PLLN = 240;
+		Osc_init.PLL.PLLP = 2;
+		Osc_init.PLL.PLLQ = 2;
+
+		clock_init.ClockType  = RCC_CLOCKTYPE_SYSCLK |\
+				RCC_CLOCKTYPE_HCLK   |\
+				RCC_CLOCKTYPE_PCLK1  |\
+				RCC_CLOCKTYPE_PCLK2;
+
+
+		clock_init.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+
+		clock_init.AHBCLKDivider  = RCC_SYSCLK_DIV1;
+
+		clock_init.APB1CLKDivider = RCC_HCLK_DIV4;
+
+		clock_init.APB2CLKDivider = RCC_HCLK_DIV2;
+
+		FlashLatncy = FLASH_ACR_LATENCY_3WS;
+
+
+		break;
+	}
+	default :
+		break;
+	}
+
+
+
+	if (HAL_RCC_OscConfig(&Osc_init) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+	if ( HAL_RCC_ClockConfig(&clock_init,FlashLatncy) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
+
+	HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+
+	HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+
+}
 
 void PrintSystemClockInfo(void)
 {
@@ -280,10 +401,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 		timer2IC_cfg.ICFilter    = 0;
 		timer2IC_cfg.ICSelection = TIM_ICSELECTION_DIRECTTI;
 
-		if( HAL_TIM_IC_ConfigChannel(&timer2_hn, &timer2IC_cfg, TIM_CHANNEL_1) != HAL_OK)
-		{
-			Error_Handler();
-		}
+		HAL_TIM_IC_ConfigChannel(&timer2_hn, &timer2IC_cfg, TIM_CHANNEL_1);
 
 
 		/*increment the counter*/
@@ -297,14 +415,8 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 
 		/*change the edge to rising edge*/
 		timer2IC_cfg.ICPolarity  = TIM_ICPOLARITY_RISING;
-		timer2IC_cfg.ICPrescaler = TIM_ICPSC_DIV1;
-		timer2IC_cfg.ICFilter    = 0;
-		timer2IC_cfg.ICSelection = TIM_ICSELECTION_DIRECTTI;
 
-		if( HAL_TIM_IC_ConfigChannel(&timer2_hn, &timer2IC_cfg, TIM_CHANNEL_1) != HAL_OK)
-		{
-			Error_Handler();
-		}
+		HAL_TIM_IC_ConfigChannel(&timer2_hn, &timer2IC_cfg, TIM_CHANNEL_1);
 
 		/*reset the counter*/
 		counter = 1;

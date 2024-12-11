@@ -17,6 +17,10 @@
 #define FALSE     0
 
 
+#define RCC_SYSCLK_50_MHZ     50
+#define RCC_SYSCLK_84_MHZ     84
+#define RCC_SYSCLK_120_MHZ    120
+
 /********************** LEDs ************************/
 
 #define GREAN_LED_PIN            GPIO_PIN_12

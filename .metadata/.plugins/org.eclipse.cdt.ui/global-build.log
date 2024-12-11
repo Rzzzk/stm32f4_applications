@@ -1,4 +1,47 @@
-08:29:07 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
+09:15:49 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/msp.d" -MT"Core/Src/msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/msp.o"
+arm-none-eabi-gcc -o "008_TIM_IC_1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/rezk/rzk/ES/Developping Area/ARM/stm32f407xx/MCU2_ws/008_TIM_IC_1/STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="008_TIM_IC_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 008_TIM_IC_1.elf
+ 
+arm-none-eabi-size  008_TIM_IC_1.elf 
+arm-none-eabi-objdump -h -S 008_TIM_IC_1.elf  > "008_TIM_IC_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  25960	    480	   2104	  28544	   6f80	008_TIM_IC_1.elf
+Finished building: default.size.stdout
+ 
+Finished building: 008_TIM_IC_1.list
+ 
+09:16:03 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
+make -j12 all 
+arm-none-eabi-size  008_TIM_IC_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25960	    480	   2104	  28544	   6f80	008_TIM_IC_1.elf
+Finished building: default.size.stdout
+ 
+09:16:32 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
+make -j12 all 
+arm-none-eabi-size  008_TIM_IC_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25960	    480	   2104	  28544	   6f80	008_TIM_IC_1.elf
+Finished building: default.size.stdout
+ 
+09:17:24 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
+make -j12 all 
+arm-none-eabi-size  008_TIM_IC_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25960	    480	   2104	  28544	   6f80	008_TIM_IC_1.elf
+Finished building: default.size.stdout
+ 
+09:18:34 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
+make -j12 all 
+arm-none-eabi-size  008_TIM_IC_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25960	    480	   2104	  28544	   6f80	008_TIM_IC_1.elf
+Finished building: default.size.stdout
+ 
+09:23:13 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "008_TIM_IC_1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/rezk/rzk/ES/Developping Area/ARM/stm32f407xx/MCU2_ws/008_TIM_IC_1/STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="008_TIM_IC_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,36 +50,22 @@ Finished building target: 008_TIM_IC_1.elf
 arm-none-eabi-size  008_TIM_IC_1.elf 
 arm-none-eabi-objdump -h -S 008_TIM_IC_1.elf  > "008_TIM_IC_1.list"
    text	   data	    bss	    dec	    hex	filename
-  25856	    480	   2104	  28440	   6f18	008_TIM_IC_1.elf
+  25960	    480	   2104	  28544	   6f80	008_TIM_IC_1.elf
 Finished building: default.size.stdout
  
 Finished building: 008_TIM_IC_1.list
  
-08:29:20 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
+09:24:06 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
 make -j12 all 
 arm-none-eabi-size  008_TIM_IC_1.elf 
    text	   data	    bss	    dec	    hex	filename
-  25856	    480	   2104	  28440	   6f18	008_TIM_IC_1.elf
+  25960	    480	   2104	  28544	   6f80	008_TIM_IC_1.elf
 Finished building: default.size.stdout
  
-08:29:34 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
+09:26:58 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
 make -j12 all 
 arm-none-eabi-size  008_TIM_IC_1.elf 
    text	   data	    bss	    dec	    hex	filename
-  25856	    480	   2104	  28440	   6f18	008_TIM_IC_1.elf
+  25960	    480	   2104	  28544	   6f80	008_TIM_IC_1.elf
 Finished building: default.size.stdout
- 
-08:39:43 **** Incremental Build of configuration Debug for project 008_TIM_IC_1 ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "008_TIM_IC_1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/rezk/rzk/ES/Developping Area/ARM/stm32f407xx/MCU2_ws/008_TIM_IC_1/STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="008_TIM_IC_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 008_TIM_IC_1.elf
- 
-arm-none-eabi-size  008_TIM_IC_1.elf 
-arm-none-eabi-objdump -h -S 008_TIM_IC_1.elf  > "008_TIM_IC_1.list"
-   text	   data	    bss	    dec	    hex	filename
-  25856	    480	   2104	  28440	   6f18	008_TIM_IC_1.elf
-Finished building: default.size.stdout
- 
-Finished building: 008_TIM_IC_1.list
  
